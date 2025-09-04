@@ -52,7 +52,7 @@ local function renderNumber(num)
     local xOffset = 0
     for i = 1, #str do
         local char = string.sub(str, i, i)
-        local img = digitImages[char]
+        local img = digitstiff[char]
         if img then
             local digitLabel = Instance.new("ImageLabel")
             digitLabel.Image = img
@@ -78,4 +78,3 @@ RunService.RenderStepped:Connect(function()
         end
     end
 end)
-
