@@ -1,4 +1,5 @@
 repeat wait() until game:IsLoaded()
+local pgui = protectgui or (syn and syn.protect_gui) or (function() end);
 local player = game.Players.LocalPlayer
 local sc = Instance.new("ScreenGui")
 local RunService = game:GetService("RunService")
@@ -7,6 +8,7 @@ local lastUpdate = 0
 local holder = Instance.new("Frame")
 local textHolder = Instance.new("Frame")
 local digitstuff = {}
+
 local url = {
     ["0"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFont/NFont0.png",
     ["1"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFont/NFont1.png",
@@ -24,6 +26,7 @@ local url = {
 
 sc.Name = "I9SkHxF"
 sc.Parent = game:GetService("CoreGui")
+pgui(sc)
 
 holder.Name = "UiOl#Sz8G"
 holder.Size = UDim2.new(0, 200, 0, 50)
@@ -75,3 +78,4 @@ RunService.RenderStepped:Connect(function()
         end
     end
 end)
+
