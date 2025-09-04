@@ -1,3 +1,4 @@
+-- c o d i n g  i s  a d d i c t i v e
 repeat wait() until game:IsLoaded()
 local pgui = protectgui or (syn and syn.protect_gui) or (function() end);
 local player = game.Players.LocalPlayer
@@ -78,3 +79,4 @@ RunService.RenderStepped:Connect(function()
         end
     end
 end)
+
