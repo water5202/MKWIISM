@@ -81,16 +81,20 @@ RunService.RenderStepped:Connect(function()
     if root then
         local currentTime = tick()
         if currentTime - lastUpdate >= tickspeed then
-            local velocity = root.Velocity.Magnitude
-            local spsText = string.format("%.1f", velocity)
+            local flatVelocity = Vector3.new(root.Velocity.X, 0, root.Velocity.Z)
+            local velocity = flatVelocity.Magnitude
+            smoothed = smoothed + (velocity - smoothed) * 0.2
+            local spsText = string.format("%.1f", smoothed)
             renderNumber(spsText)
             lastUpdate = currentTime
         end
     end
 end)
 
+
 Notify({
 Description = "Loaded";
 Title = "MKWIISM";
 Duration = 5;
 });
+
