@@ -75,21 +75,32 @@ local function renderNumber(num)
     end
 end
 
+local lastPos = nil
+local smoothed = 0
+
 RunService.RenderStepped:Connect(function()
     local char = player.Character
     local root = char and char:FindFirstChild("HumanoidRootPart")
     if root then
         local currentTime = tick()
         if currentTime - lastUpdate >= tickspeed then
-            local flatVelocity = Vector3.new(root.Velocity.X, 0, root.Velocity.Z)
-            local velocity = flatVelocity.Magnitude
+            local velocity
+            if lastPos then
+                local delta = (root.Position - lastPos)
+                delta = Vector3.new(delta.X, 0, delta.Z)
+                velocity = delta.Magnitude / (currentTime - lastUpdate)
+            else
+                velocity = 0
+            end
             smoothed = smoothed + (velocity - smoothed) * 0.2
             local spsText = string.format("%.1f", smoothed)
             renderNumber(spsText)
+            lastPos = root.Position
             lastUpdate = currentTime
         end
     end
 end)
+
 
 
 Notify({
@@ -97,4 +108,3 @@ Description = "Loaded";
 Title = "MKWIISM";
 Duration = 5;
 });
-
