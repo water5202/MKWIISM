@@ -72,7 +72,7 @@ end;
 local lastPos = nil;
 local smoothed = 0;
 
-RunService.RenderStepped:Connect(function();
+RunService.RenderStepped:Connect(function()
     local char = player.Character;
     local root = char and char:FindFirstChild("HumanoidRootPart");
     if root then
@@ -96,5 +96,3 @@ RunService.RenderStepped:Connect(function();
 end);
 
 Notify.WaterNotify("MKWIISM", "Finished Loading!", 5);
-
-
