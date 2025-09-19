@@ -1,6 +1,6 @@
 -- c o d i n g  i s  a d d i c t i v e
-local Notify = loadstring(game:HttpGet("https://raw.githubusercontent.com/water5202/Notification-Library/refs/heads/main/Notify.lua"))()
-Notify.WaterNotify("MKWIISM", "Loading...", 5)
+local Notify = loadstring(game:HttpGet("https://raw.githubusercontent.com/water5202/Notification-Library/refs/heads/main/Notify.lua"))();
+Notify.WaterNotify("MKWIISM", "Loading...", 5);
 
 repeat wait() until game:IsLoaded();
 local pgui = protectgui or (syn and syn.protect_gui) or (function() end);
@@ -50,11 +50,11 @@ for char, url in pairs(url) do
     digitstuff[char] = getcustomasset(fileName);
 end;
 
-local function renderNumber(num)
+function renderNumber(num)
     textHolder:ClearAllChildren();
     local str = tostring(num);
     local xOffset = 0;
-    for i = 1, #str do;
+    for i = 1, #str do
         local char = string.sub(str, i, i);
         local img = digitstuff[char];
         if img then
@@ -95,5 +95,6 @@ RunService.RenderStepped:Connect(function();
     end;
 end);
 
-Notify.WaterNotify("MKWIISM", "Finished Loading!", 5)
+Notify.WaterNotify("MKWIISM", "Finished Loading!", 5);
+
 
