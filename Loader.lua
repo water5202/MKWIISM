@@ -1,12 +1,6 @@
 -- c o d i n g  i s  a d d i c t i v e
-local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/Dynissimo/main/Scripts/AkaliNotif.lua"))();
-local Notify = AkaliNotif.Notify;
-
-Notify({
-Description = "Loading...";
-Title = "MKWIISM";
-Duration = 5;
-});
+local Notify = loadstring(game:HttpGet("https://raw.githubusercontent.com/water5202/Notification-Library/refs/heads/main/Notify.lua"))()
+Notify.WaterNotify("MKWIISM", "Loading...", 5)
 
 repeat wait() until game:IsLoaded()
 local pgui = protectgui or (syn and syn.protect_gui) or (function() end);
@@ -101,10 +95,4 @@ RunService.RenderStepped:Connect(function()
     end
 end)
 
-
-
-Notify({
-Description = "Loaded";
-Title = "MKWIISM";
-Duration = 5;
-});
+Notify.WaterNotify("MKWIISM", "Finished Loading!", 5)
