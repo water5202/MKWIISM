@@ -85,7 +85,7 @@ RunService.RenderStepped:Connect(function()
                 velocity = delta.Magnitude / (currentTime - lastUpdate);
             else
                 velocity = 0;
-            end;
+            end
             smoothed = smoothed + (velocity - smoothed) * 0.2;
             local spsText = string.format("%.1f", smoothed);
             renderNumber(spsText);
@@ -96,3 +96,4 @@ RunService.RenderStepped:Connect(function()
 end);
 
 Notify.WaterNotify("MKWIISM", "Finished Loading!", 5);
+
