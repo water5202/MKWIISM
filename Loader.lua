@@ -51,6 +51,7 @@ for char, url in pairs(url) do
 end;
 
 function renderNumber(num)
+    task.wait(0.1);
     textHolder:ClearAllChildren();
     local str = tostring(num);
     local xOffset = 0;
@@ -96,5 +97,6 @@ RunService.RenderStepped:Connect(function()
 end);
 
 Notify.WaterNotify("MKWIISM", "Finished Loading!", 5);
+
 
 
