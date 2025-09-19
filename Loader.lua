@@ -77,7 +77,7 @@ RunService.RenderStepped:Connect(function()
     local root = char and char:FindFirstChild("HumanoidRootPart");
     if root then
         local currentTime = tick();
-        if currentTime - lastUpdate >= tickspeed then;
+        if currentTime - lastUpdate >= tickspeed then
             local velocity;
             if lastPos then
                 local delta = (root.Position - lastPos);
@@ -85,7 +85,7 @@ RunService.RenderStepped:Connect(function()
                 velocity = delta.Magnitude / (currentTime - lastUpdate);
             else
                 velocity = 0;
-            end
+            end;
             smoothed = smoothed + (velocity - smoothed) * 0.2;
             local spsText = string.format("%.1f", smoothed);
             renderNumber(spsText);
@@ -96,4 +96,5 @@ RunService.RenderStepped:Connect(function()
 end);
 
 Notify.WaterNotify("MKWIISM", "Finished Loading!", 5);
+
 
