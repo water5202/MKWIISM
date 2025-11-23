@@ -51,6 +51,7 @@ for char, url in pairs(url) do
 end;
 
 function renderNumber(num)
+    task.wait(0.1);
     task.wait();
     textHolder:ClearAllChildren();
     local str = tostring(num);
@@ -87,7 +88,7 @@ RunService.RenderStepped:Connect(function()
             else
                 velocity = 0;
             end;
-            smoothed = math.floor(smoothed * 10 + 0.5) / 10;
+            smoothed = smoothed + (velocity - smoothed) * 0.2;
             local spsText = string.format("%.1f", smoothed);
             renderNumber(spsText);
             lastPos = root.Position;
@@ -97,8 +98,3 @@ RunService.RenderStepped:Connect(function()
 end);
 
 Notify.WaterNotify("MKWIISM", "Finished Loading!", 5);
-
-
-
-
-
