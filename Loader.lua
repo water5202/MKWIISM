@@ -87,16 +87,8 @@ RunService.RenderStepped:Connect(function()
             else
                 velocity = 0;
             end;
-
             smoothed = smoothed + (velocity - smoothed) * 0.2;
-            local value = smoothed;
-            local spsText;
-            if math.floor(value) == value then
-                spsText = tostring(math.floor(value));
-            else
-                spsText = string.format("%.1f", value);
-            end;
-
+            local spsText = string.format("%.1f", smoothed);
             renderNumber(spsText);
             lastPos = root.Position;
             lastUpdate = currentTime;
@@ -105,4 +97,3 @@ RunService.RenderStepped:Connect(function()
 end);
 
 Notify.WaterNotify("MKWIISM", "Finished Loading!", 5);
-
