@@ -14,17 +14,17 @@ local textHolder = Instance.new("Frame");
 local digitstuff = {};
 
 local url = {
-    ["0"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFont/NFont0.png",
-    ["1"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFont/NFont1.png",
-    ["2"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFont/NFont2.png",
-    ["3"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFont/NFont3.png",
-    ["4"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFont/NFont4.png",
-    ["5"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFont/NFont5.png",
-    ["6"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFont/NFont6.png",
-    ["7"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFont/NFont7.png",
-    ["8"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFont/NFont8.png",
-    ["9"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFont/NFont9.png",
-    ["."] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFont/NFontDecimal.png",
+    ["0"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFontReskin/NFont0.png",
+    ["1"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFontReskin/NFont1.png",
+    ["2"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFontReskin/NFont2.png",
+    ["3"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFontReskin/NFont3.png",
+    ["4"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFontReskin/NFont4.png",
+    ["5"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFontReskin/NFont5.png",
+    ["6"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFontReskin/NFont6.png",
+    ["7"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFontReskin/NFont7.png",
+    ["8"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFontReskin/NFont8.png",
+    ["9"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFontReskin/NFont9.png",
+    ["."] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFontReskin/NFontMinus.png",
 }
 
 
