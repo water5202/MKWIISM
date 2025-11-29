@@ -1,5 +1,5 @@
-local Notify = loadstring(game:HttpGet("https://raw.githubusercontent.com/water5202/Notification-Library/refs/heads/main/Notify.lua"))()
-Notify.WaterNotify("MKWIISM", "Loading...", 5)
+local notify = loadstring(game:HttpGet("https://raw.githubusercontent.com/water5202/Notification-Library/refs/heads/main/Notify.lua"))()
+notify.WaterNotify("MKWIISM", "Loading...", 5)
 
 repeat wait() until game:IsLoaded()
 local pgui = protectgui or (syn and syn.protect_gui) or function() end
@@ -23,7 +23,6 @@ local url = {
 ["7"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFontReskin/NFont7.png",
 ["8"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFontReskin/NFont8.png",
 ["9"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFontReskin/NFont9.png",
-["."] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFontReskin/NFontDecimal.png",
 ["-"] = "https://raw.githubusercontent.com/water5202/MKWII-SpeedMeter/refs/heads/main/NFontReskin/NFontMinus.png"
 }
 
@@ -43,68 +42,65 @@ textHolder.BackgroundTransparency = 1
 textHolder.Parent = holder
 
 for char, url in pairs(url) do
-local fileName = "NFont" .. char .. ".png"
-local imgdata = game:HttpGet(url)
-writefile(fileName, imgdata)
-digitstuff[char] = getcustomasset(fileName)
+    local fileName = "NFont" .. char .. ".png"
+    local imgdata = game:HttpGet(url)
+    writefile(fileName, imgdata)
+    digitstuff[char] = getcustomasset(fileName)
 end
 
 function renderNumber(num)
-textHolder:ClearAllChildren()
-local str = tostring(num)
-local xOffset = 0
-if num < 0 then
-local minusImg = digitstuff["-"]
-if minusImg then
-local digitLabel = Instance.new("ImageLabel")
-digitLabel.Image = minusImg
-digitLabel.Size = UDim2.new(0, 50, 0, 50)
-digitLabel.Position = UDim2.new(0, xOffset, 0, 0)
-digitLabel.BackgroundTransparency = 1
-digitLabel.Parent = textHolder
-xOffset = xOffset + 50
-end
-str = str:gsub("-", "")
-end
-for i = 1, #str do
-local char = string.sub(str, i, i)
-local img = digitstuff[char]
-if img then
-local digitLabel = Instance.new("ImageLabel")
-digitLabel.Image = img
-digitLabel.Size = UDim2.new(0, 50, 0, 50)
-digitLabel.Position = UDim2.new(0, xOffset, 0, 0)
-digitLabel.BackgroundTransparency = 1
-digitLabel.Parent = textHolder
-xOffset = xOffset + 50
-end
-end
+    textHolder:ClearAllChildren()
+    local str = tostring(num)
+    local xOffset = 0
+    if num < 0 then
+        local minusImg = digitstuff["-"]
+        if minusImg then
+            local digitLabel = Instance.new("ImageLabel")
+            digitLabel.Image = minusImg
+            digitLabel.Size = UDim2.new(0, 50, 0, 50)
+            digitLabel.Position = UDim2.new(0, xOffset, 0, 0)
+            digitLabel.BackgroundTransparency = 1
+            digitLabel.Parent = textHolder
+            xOffset = xOffset + 50
+        end
+        str = str:gsub("-", "")
+    end
+    for i = 1, #str do
+        local char = string.sub(str, i, i)
+        local img = digitstuff[char]
+        if img then
+            local digitLabel = Instance.new("ImageLabel")
+            digitLabel.Image = img
+            digitLabel.Size = UDim2.new(0, 50, 0, 50)
+            digitLabel.Position = UDim2.new(0, xOffset, 0, 0)
+            digitLabel.BackgroundTransparency = 1
+            digitLabel.Parent = textHolder
+            xOffset = xOffset + 50
+        end
+    end
 end
 
 local lastPos = nil
-local smoothed = 0
 
 RunService.RenderStepped:Connect(function()
-local char = player.Character
-local root = char and char:FindFirstChild("HumanoidRootPart")
-if root then
-local currentTime = tick()
-if currentTime - lastUpdate >= tickspeed then
-local velocity
-if lastPos then
-local delta = (root.Position - lastPos)
-delta = Vector3.new(delta.X, 0, delta.Z)
-velocity = delta.Magnitude / (currentTime - lastUpdate)
-else
-velocity = 0
-end
-smoothed = smoothed + (velocity - smoothed) * 0.2
-local spsText = string.format("%.1f", smoothed)
-renderNumber(spsText)
-lastPos = root.Position
-lastUpdate = currentTime
-end
-end
+    local char = player.Character
+    local root = char and char:FindFirstChild("HumanoidRootPart")
+    if root then
+        local currentTime = tick()
+        if currentTime - lastUpdate >= tickspeed then
+            local velocity = 0
+            if lastPos then
+                local delta = root.Position - lastPos
+                delta = Vector3.new(delta.X, 0, delta.Z)
+                local lookDir = root.CFrame.LookVector
+                velocity = delta:Dot(lookDir) / (currentTime - lastUpdate)
+            end
+            local spsNumber = math.floor(velocity + 0.5)
+            renderNumber(spsNumber)
+            lastPos = root.Position
+            lastUpdate = currentTime
+        end
+    end
 end)
 
-Notify.WaterNotify("MKWIISM", "Finished Loading!", 5)
+notify.WaterNotify("MKWIISM", "Finished Loading!", 5)
