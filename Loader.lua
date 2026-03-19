@@ -80,16 +80,16 @@ RunService.RenderStepped:Connect(function()
         local currentTime = tick();
         if currentTime - lastUpdate >= tickspeed then
             local velocity;
-            if lastPos then
-                local delta = (root.Position - lastPos);
-                delta = Vector3.new(delta.X, 0, delta.Z);
-                velocity = delta.Magnitude / (currentTime - lastUpdate);
-            else
-                velocity = 0;
-            end;
-            smoothed = smoothed + (velocity - smoothed) * 0.2;
-            local spsText = string.format("%.1f", smoothed);
-            renderNumber(spsText);
+if lastPos then
+    local delta = (root.Position - lastPos)
+    delta = Vector3.new(delta.X, 0, delta.Z)
+    velocity = delta.Magnitude / (currentTime - lastUpdate)
+else
+    velocity = 0
+end
+
+local spsText = string.format("%.1f", velocity)
+renderNumber(spsText)
             lastPos = root.Position;
             lastUpdate = currentTime;
         end;
